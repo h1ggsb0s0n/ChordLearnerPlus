@@ -1,0 +1,3 @@
+class SeventhChord extends Chord{
+
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/piano.css">
+    <title>MyChordLearnerPlus</title>
+    <script type="module" defer src="js/Logic.js"></script>
+    <script>
+        /*var c = new Audio();
+        c.src = "media/tune/68441__pinkyfinger__piano-c.wav";
+        var d = new Audio();
+        d.src = "media/tune/68442__pinkyfinger__piano-d.wav";
+        var e = new Audio();
+        e.src = "media/tune/68443__pinkyfinger__piano-e.wav";
+        var f = new Audio();
+        f.src = "media/tune/piano_F.wav";
+        var g = new Audio();
+        g.src = "media/tune/68447__pinkyfinger__piano-g.wav";
+        var a = new Audio();
+        f.src = "media/tune/68445__pinkyfinger__piano-a.wav";
+        var h = new Audio();
+        var c1 = new Audio();
+        c1.src = "media/tune/68440__pinkyfinger__piano-c.wav";
+        var d1 = new Audio();
+        d1.src = "media/tune/piano_D.mp3"
+        var e1 = new Audio();*/
+    </script>
+
+  </head>
+  <body>
+    <h1>ChordLearnerPlus</h1>
+
+    <h2>Question:</h2>
+    <h2 id = "question"/>
+    <br>
+    <h2>Answer:</h2>
+    <h3 id = "firstNote"></h3>
+    <h3 id = "secondNote"></h3>
+    <h3 id = "thirdNote"></h3>
+    <br>
+    <h2>ErrorMessages:</h2>
+    <h3 id = "errorMessages"></h3>
+    <button type="button" id = "previousButton">Previous Note!</button>
+    <button type="button" id ="nextButton">Next Note</button>
+
+    <div class="top">
+      <!--
+      <img src="media/pictures/music-notes-clipart-transparent-6.png" class = "image_one">
+      <img src="media/pictures/music-note-icon-34249.png" class ="image_two">
+      <img src="media/pictures/music-note-icon-34249.png" class ="image_three">
+      <img src="media/pictures/music-note-icon-34249.png" class ="image_four">
+    -->
+    </div> <!-- wenn ich dieses div runter mache dann wird die top classe nicht angewannt wieso? maybe -> oben hat mehr priorität als unten? -->
+      <div style = "margin-left: 9px;">
+      <div>
+        <button class="white" id = "c" onMouseDown="c.play()"></button>
+        <button class="white" id = "d" onMouseDown="d.play()" ></button>
+        <button class="white" id = "e" onMouseDown="e.play()"></button>
+        <button class="white" id = "f" onMouseDown="f.play()"></button>
+        <button class="white" id = "g" onMouseDown="g.play()"></button>
+        <button class="white" id = "a" onMouseDown="a.play()"></button>
+        <button class="white" id = "h" onMouseDown="h.play()"></button>
+        <button class="white" id = "c1" onMouseDown="c1.play()"></button>
+        <button class="white" id = "d1" onMouseDown="d1.play()"></button>
+        <button class="white" id = "e1" onMouseDown="d2.play()"></button>
+
+        <button class="black"  id = "c#"></button>
+        <button class="black2" id = "d#"></button>
+        <button class="black3" id = "f#"></button>
+        <button class="black4" id = "g#"></button>
+        <button class="black5" id = "a#"></button>
+        <button class="black6" id = "c1#"></button>
+        <button class="black7" id = "d1#"></button>
+      </div>
+    </div>
+  </body>
+</html>
