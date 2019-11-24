@@ -4,7 +4,7 @@
 }
 
 body{
-  background: white;
+  background: black;
 }
 
 .top{
@@ -21,6 +21,7 @@ body{
   margin-left:4px;
   height: 633px;
   width:130px;
+  background-color: #EBEBEB;
   box-shadow: inset 0px 0px 30px 20px white;
   cursor: pointer;
 }
@@ -39,7 +40,7 @@ body{
 }
 
 .black:active{
-  background: linear-gradient(to bottom, black 0%, gray 100%)
+  /*background: linear-gradient(to bottom, black 0%, gray 100%)*/
 }
 
 .black:hover{

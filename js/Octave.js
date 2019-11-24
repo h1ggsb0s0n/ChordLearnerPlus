@@ -3,30 +3,68 @@ import CircleOfFifths from "/ChordLearnerPlus/js/CircleOfFifths.js";
 class Octave{
 
 constructor(){
-  this.octaveMajor = ["C", "C#", "D","D#","E","F","F#","G","G#","A","A#","H"];
-  this.octaveMinor = ["C", "Db", "D","Eb","E","F", "Gb","G","Ab","A","B","H"];
-  this.majorPattern = [4,7];
-  this.minorPattern = [3,7];
+  this.octaveSharps = ["C", "C#", "D","D#","E","F","F#","G","G#","A","A#","H"];
+  this.octaveFlats = ["C", "Db", "D","Eb","E","F", "Gb","G","Ab","A","B","H"];
+  this.majorPattern = [4,7];//Represents the halftone steps in a major scale
+  this.minorPattern = [3,7];//Represents the halftone steps in a minor scale
   this.circleOfFifths = new CircleOfFifths();
+  this.scaleDegree = ["tonic", "supertonic", "mediant", "subdominant", "dominant", "subtonic","leading tone"];
 }
 
 
-
-getOctave(baseNote){
-  //double the array to slice it
+//// TODO: Terrible Method: Adjust it!!! Build in Check if The note exists
+getOctave(baseNote, tonality){
+  var t = tonality.toLowerCase();
   var index;
-  if(this.circleOfFifths.isRightSide(baseNote)){
-      var twoOctaves = this.octaveMajor.concat(this.octaveMajor);
-      index = this.octaveMajor.findIndex(note => note === baseNote);
+  switch(t){
+    case "major":
+    if(this.circleOfFifths.isRightSide(baseNote, "major")){
+      var twoOctaves = this.octaveSharps.concat(this.octaveSharps);
+      index = this.octaveSharps.findIndex(note => note === baseNote);
       return twoOctaves.slice(index, index+13);
-  }else{
-    var twoOctaves = this.octaveMinor.concat(this.octaveMinor);
-    index = this.octaveMinor.findIndex(note => note === baseNote);
-    return twoOctaves.slice(index, index+13);
+    } else {
+      var twoOctaves = this.octaveFlats.concat(this.octaveFlats);
+      index = this.octaveFlats.findIndex(note => note === baseNote);
+      return twoOctaves.slice(index, index+13);
+    }
+    break;
+
+    case "minor":
+    if(this.circleOfFifths.isRightSide(baseNote, "minor")){
+      var twoOctaves = this.octaveSharps.concat(this.octaveSharps);
+      index = this.octaveSharps.findIndex(note => note === baseNote);
+      return twoOctaves.slice(index, index+13);
+    } else {
+      var twoOctaves = this.octaveFlats.concat(this.octaveFlats);
+      index = this.octaveFlats.findIndex(note => note === baseNote);
+      return twoOctaves.slice(index, index+13);
+    }
+    break;
+
+
   }
 }
 
-returnChord(baseNote){//patternArray als zweiter Parameter
+
+returnScaleDegreeTriad(baseNote, degree){
+
+}
+
+returnScaleDegree(degree){
+  var degrees = degree -1;
+  return this.scaleDegree[degrees];
+
+}
+
+returnMinorScale(){
+
+}
+
+returnMajorScale(){
+
+}
+
+returnMajorChord(baseNote){//patternArray als zweiter Parameter
   var chord = [baseNote];
   var octave = this.getOctave(baseNote);
   this.majorPattern.forEach(step => {
@@ -35,12 +73,21 @@ returnChord(baseNote){//patternArray als zweiter Parameter
   return chord
 }
 
+returnMinorChord(baseNote){
+  var chord = [baseNote];
+  var octave = this.getOctave(baseNote);
+  this.minorPattern.forEach(step => {
+    chord.push(octave[step]);
+  });
+  return chord
+}
+
 returnShuffledArrayMajor(){
-  return this.shuffleArray(this.octaveMinor);
+  return this.shuffleArray(this.octaveFlats);
 }
 
 returnShuffledArrayMinor(){
-  return this.shuffleArray(this.octaveMinor);
+  return this.shuffleArray(this.octaveFlats);
 }
 
 returnShuffledArrayMixed(){

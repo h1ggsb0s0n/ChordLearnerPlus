@@ -1,40 +1,31 @@
 import Chord from "/ChordLearnerPlus/js/Chord.js";
-import Octave from"/ChordLearnerPlus/js/Octave.js"
+import Scale from "/ChordLearnerPlus/js/Scale.js";
+import ScaleFactory from "/ChordLearnerPlus/js/ScaleFactory.js";
+
 class ChordFactory{
 
 constructor(){
-  this.majorPattern = [4,7];
-  this.minorPattern = [3,7];
-  this.octave = new Octave();
+  //this.majorPattern = [4,7];// represent the corresponding  tones of the pattern
+  //this.minorPattern = [3,7];
+  this.scaleFactory = new ScaleFactory();
 }
 
-returnMajorChord(baseNote){
-  var chordAray = [baseNote];
-  var octave = this.octave.getOctave(baseNote);
-  this.majorPattern.forEach(step => {
-    chordAray.push(octave[step]);
-  });
-  return new Chord(chordAray);
+  returnMajorChord(baseNote){
+    var majorScale = this.scaleFactory.returnMajorScale(baseNote);
+    var scaleArray = majorScale.getScale();
+    return new Chord([scaleArray[0],scaleArray[2],scaleArray[4]], "major", majorScale);
   }
 
-returnMinorChord(baseNote){
-  var chordAray = [baseNote];
-  var octave = this.octave.getOctave(baseNote);
-  this.minorPattern.forEach(step => {
-      chordAray.push(octave[step]);
-    });
-    return new Chord(chordAray);
+
+  returnMinorChord(baseNote){
+    var minorScale = this.scaleFactory.returnNaturalMinorScale(baseNote);
+    var scaleArray = minorScale.getScale();
+    var note1 = scaleArray[0];
+    var note2 = scaleArray[2];
+    var note3 = scaleArray[4];
+    return new Chord([note1,note2,note3], "minor", minorScale);
   }
 
 }
 
-
-/*var factory = new ChordFactory();
-var question = "Z";
-var calculatedChordAray = factory.returnMajorChord(question).getChord();
-document.getElementById("question").innerHTML = question;
-document.getElementById("firstChord").innerHTML = calculatedChordAray[0];
-document.getElementById("secondChord").innerHTML = calculatedChordAray[1];
-document.getElementById("thirdChord").innerHTML = calculatedChordAray[2];*/
-
-export default ChordFactory
+export default ChordFactory;

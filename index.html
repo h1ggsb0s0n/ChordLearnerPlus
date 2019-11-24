@@ -1,77 +1,192 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/piano.css">
-    <title>MyChordLearnerPlus</title>
-    <script type="module" defer src="js/Logic.js"></script>
-    <script>
-        /*var c = new Audio();
-        c.src = "media/tune/68441__pinkyfinger__piano-c.wav";
-        var d = new Audio();
-        d.src = "media/tune/68442__pinkyfinger__piano-d.wav";
-        var e = new Audio();
-        e.src = "media/tune/68443__pinkyfinger__piano-e.wav";
-        var f = new Audio();
-        f.src = "media/tune/piano_F.wav";
-        var g = new Audio();
-        g.src = "media/tune/68447__pinkyfinger__piano-g.wav";
-        var a = new Audio();
-        f.src = "media/tune/68445__pinkyfinger__piano-a.wav";
-        var h = new Audio();
-        var c1 = new Audio();
-        c1.src = "media/tune/68440__pinkyfinger__piano-c.wav";
-        var d1 = new Audio();
-        d1.src = "media/tune/piano_D.mp3"
-        var e1 = new Audio();*/
-    </script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous">
+    <script type="module" defer src="js/Start.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 
-  </head>
-  <body>
-    <h1>ChordLearnerPlus</h1>
+    <title>ChordLearnerPlus</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">ChordLearnerPlus</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#contribute-section" class="nav-link"  href="https://github.com/h1ggsb0s0n/Stave">GitHub</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Theory</a>
+                  <div class="dropdown-menu">
+                      <a href="https://en.piano-fingering.org/" class="dropdown-item">Piano Scales</a>
+                      <a href="https://www.theorie-musik.de/akkorde/" class="dropdown-item">Chords</a>
+                  </div>
+              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about-section">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <h2>Question:</h2>
-    <h2 id = "question"/>
-    <br>
-    <h2>Answer:</h2>
-    <h3 id = "firstNote"></h3>
-    <h3 id = "secondNote"></h3>
-    <h3 id = "thirdNote"></h3>
-    <br>
-    <h2>ErrorMessages:</h2>
-    <h3 id = "errorMessages"></h3>
-    <button type="button" id = "previousButton">Previous Note!</button>
-    <button type="button" id ="nextButton">Next Note</button>
 
-    <div class="top">
-      <!--
-      <img src="media/pictures/music-notes-clipart-transparent-6.png" class = "image_one">
-      <img src="media/pictures/music-note-icon-34249.png" class ="image_two">
-      <img src="media/pictures/music-note-icon-34249.png" class ="image_three">
-      <img src="media/pictures/music-note-icon-34249.png" class ="image_four">
-    -->
-    </div> <!-- wenn ich dieses div runter mache dann wird die top classe nicht angewannt wieso? maybe -> oben hat mehr priorität als unten? -->
-      <div style = "margin-left: 9px;">
-      <div>
-        <button class="white" id = "c" onMouseDown="c.play()"></button>
-        <button class="white" id = "d" onMouseDown="d.play()" ></button>
-        <button class="white" id = "e" onMouseDown="e.play()"></button>
-        <button class="white" id = "f" onMouseDown="f.play()"></button>
-        <button class="white" id = "g" onMouseDown="g.play()"></button>
-        <button class="white" id = "a" onMouseDown="a.play()"></button>
-        <button class="white" id = "h" onMouseDown="h.play()"></button>
-        <button class="white" id = "c1" onMouseDown="c1.play()"></button>
-        <button class="white" id = "d1" onMouseDown="d1.play()"></button>
-        <button class="white" id = "e1" onMouseDown="d2.play()"></button>
 
-        <button class="black"  id = "c#"></button>
-        <button class="black2" id = "d#"></button>
-        <button class="black3" id = "f#"></button>
-        <button class="black4" id = "g#"></button>
-        <button class="black5" id = "a#"></button>
-        <button class="black6" id = "c1#"></button>
-        <button class="black7" id = "d1#"></button>
+
+  <header id="home-section">
+    <div class="overlay_result">
+        <img  src="media/pictures/correct.jpg" id = "correct" class="image"></img><!-- absolute would be /ChordLearnerPlus/media......-->
+        <img  src="media/pictures/false.png" id = "false" class="image"></img>
+    </div>
+      <div class="home-inner container">
+      <div class="row justify-content-start">
+      <div class="col-lg-8 d-none d-lg-block justify-content-center">
+        <canvas class="canvas" id="canvas" width="760" height="500"></canvas>
+      </div>
+
+        <div class="col-lg-4">
+          <div class="card bg-primary card-form">
+            <div class="btn-group">
+              <button class="btn btn-secondary" type="button" id="Question1">1</button>
+              <button class="btn btn-secondary" type="button" id="Question2">2</button>
+              <button class="btn btn-secondary" type="button" id="Question3">3</button>
+              <button class="btn btn-secondary" type="button" id="Question4">4</button>
+              <button class="btn btn-secondary" type="button" id="Question5">5</button>
+              <button class="btn btn-secondary" type="button" id="Question6">6</button>
+              <button class="btn btn-secondary" type="button" id="Question7">7</button>
+              <button class="btn btn-secondary" type="button" id="Question8">8</button>
+              <button class="btn btn-secondary" type="button" id="Question9">9</button>
+              <button class="btn btn-secondary" type="button" id="Question10">10</button>
+
+            </div>
+              <div class="card-header">
+                <button class="btn btn-success btn-lg" type="button" id="checkAnswer">
+                <i class="far fa-check-square"></i> CheckAnswer</button>
+              </div>
+              <div class="card-body">
+                <h3 id="typeOfQuestion">Type of Question</h3>
+                <p id="question">Question</p>
+                <form id = "answers">
+                <!-- generated Answers by StartClass-->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</header>
+
+
+<!--About Section-->
+<section id="about-section" class="bg-light text-muted py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="media/pictures/About.jpg" alt="" class="img-fluid mb-3 rounded-circle">
+      </div>
+      <div class="col-md-6">
+        <h3>About</h3>
+        <p>ChordLearnerPlus generates randomly 10 questions to help improve your sight-reeding skills. All Questions/Scales/Chords are calculated from Scratch!</p>
+
+        <div class="d-flex">
+          <div class="p-4 align-self-start">
+            <i class="fas fa-check fa-2x"></i>
+          </div>
+          <div class="p-4 align-self-end">
+            <h3>ChordQuestion</h3>
+            A chord will be asked for. Either Major or Minor. Please select the displayed chord in the canvas.
+          </div>
+        </div>
+
+        <div class="d-flex">
+          <div class="p-4 align-self-start">
+            <i class="fas fa-check fa-2x"></i>
+          </div>
+          <div class="p-4 align-self-end">
+            <h3>StepTriadQuestion</h3>
+            Please select the Step triad displayed in the Stave. Bonus Tip: The Kind of Scale can be deteremined by the number of Sharps/Flats infront of the Clef.
+          </div>
+        </div>
+
+        <div class="d-flex">
+          <div class="p-4 align-self-start">
+            <i class="fas fa-check fa-2x"></i>
+          </div>
+          <div class="p-4 align-self-end">
+            <h3>IntervalQuestion</h3>
+            Tired of not knowing your intervals? This Question will practice your sightreading skills.
+          </div>
+
+
+
+
       </div>
     </div>
-  </body>
+  </div>
+</section>
+
+
+<section id="contribute-section" class="bg-primary">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center py-5">
+        <h1 class="display-4">GITHUB</h1>
+        <p class="lead">Please, feel free to Contribute to the GITHUB repository!</p>
+        <a href="https://github.com/h1ggsb0s0n/Stave" class="btn btn-outline-light">GITHUB</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer id="main-footer" class="bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center py-4">
+          <h3>ChordLearnerPlus</h3>
+          <p>Copyright &copy;
+            <span id="year"></span>
+          </p>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Contact Us</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script>
+            // Get the current year for the copyright
+            $('#year').text(new Date().getFullYear());
+
+            // Init Scrollspy
+            $('body').scrollspy({ target: '#main-nav' });
+
+            // Smooth Scrolling
+            $("#main-nav a").on('click', function (event) {
+              if (this.hash !== "") {
+                event.preventDefault();
+
+                const hash = this.hash;
+
+                $('html, body').animate({
+                  scrollTop: $(hash).offset().top
+                }, 800, function () {
+
+                  window.location.hash = hash;
+                });
+              }
+            });
+          </script>
+
+
+</body>
 </html>

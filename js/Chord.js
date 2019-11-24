@@ -1,9 +1,15 @@
+//todo Add Step in a scale
+
 class Chord{
-  constructor(chordArray){
+  constructor(chordArray, tonality, scale){
     this.chordArray = chordArray;
+    this.tonality = tonality;
+    this.scale = scale;
+    this.step = undefined;
+
   }
 
-  getChord(){
+  getChordArray(){
     return this.chordArray;
   }
 
@@ -14,6 +20,18 @@ class Chord{
   getSecondReversal(){
     var secondReversal = [this.chordArray[2], this.chordArray[0], this.chordArray[1]];
     return secondReversal;
+  }
+
+  getTonality(){
+    return this.tonality;
+  }
+
+  getScale(){
+    return this.scale;
+  }
+
+  setStep(step){
+    this.step = step;
   }
 }
 
