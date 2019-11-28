@@ -1,6 +1,6 @@
-import MultipleChoiceQuestion from "/ChordLearnerPlus/js/MultipleChoiceQuestion.js";
-import Scale from "/ChordLearnerPlus/js/Scale.js";
-import CircleOfFifths from "/ChordLearnerPlus/js/CircleOfFifths.js";
+import MultipleChoiceQuestion from "/ChordLearnerPlus/js/Questions/MultipleChoiceQuestion.js";
+import Scale from "/ChordLearnerPlus/js/NoteEngine/Scale.js";
+import CircleOfFifths from "/ChordLearnerPlus/js/NoteEngine/CircleOfFifths.js";
 
 class IntervalQuestion extends MultipleChoiceQuestion{
 

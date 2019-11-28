@@ -1,6 +1,6 @@
-import Chord from "/ChordLearnerPlus/js/Chord.js";
-import Scale from "/ChordLearnerPlus/js/Scale.js";
-import ScaleFactory from "/ChordLearnerPlus/js/ScaleFactory.js";
+import Chord from "/ChordLearnerPlus/js/NoteEngine/Chord.js";
+import Scale from "/ChordLearnerPlus/js/NoteEngine/Scale.js";
+import ScaleFactory from "/ChordLearnerPlus/js/NoteEngine/ScaleFactory.js";
 
 class ChordFactory{
 

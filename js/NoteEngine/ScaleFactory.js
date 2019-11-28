@@ -1,6 +1,6 @@
-import Octave from "/ChordLearnerPlus/js/Octave.js";
-import Scale from "/ChordLearnerPlus/js/Scale.js";
-import CircleOfFifths from "/ChordLearnerPlus/js/CircleOfFifths.js";
+import Octave from "/ChordLearnerPlus/js/NoteEngine/Octave.js";
+import Scale from "/ChordLearnerPlus/js/NoteEngine/Scale.js";
+import CircleOfFifths from "/ChordLearnerPlus/js/NoteEngine/CircleOfFifths.js";
 
 
 class ScaleFactory {

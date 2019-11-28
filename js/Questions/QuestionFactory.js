@@ -1,11 +1,10 @@
-import Question from "/ChordLearnerPlus/js/Question.js"
-import ChordQuestion from "/ChordLearnerPlus/js/ChordQuestion.js"
-import MultipleChoiceQuestion from "/ChordLearnerPlus/js/MultipleChoiceQuestion.js"
-import IntervalQuestion from "/ChordLearnerPlus/js/IntervalQuestion.js"
-import ChordFactory from "/ChordLearnerPlus/js/ChordFactory.js";
-import ScaleFactory from "/ChordLearnerPlus/js/ScaleFactory.js";
-import CircleOfFifths from "/ChordLearnerPlus/js/CircleOfFifths.js";
-import StepTriadQuestion from "/ChordLearnerPlus/js/StepTriadQuestion.js";
+import ChordQuestion from "/ChordLearnerPlus/js/Questions/ChordQuestion.js"
+import IntervalQuestion from "/ChordLearnerPlus/js/Questions/IntervalQuestion.js"
+import StepTriadQuestion from "/ChordLearnerPlus/js/Questions/StepTriadQuestion.js";
+import ChordFactory from "/ChordLearnerPlus/js/NoteEngine/ChordFactory.js";
+import ScaleFactory from "/ChordLearnerPlus/js/NoteEngine/ScaleFactory.js";
+import CircleOfFifths from "/ChordLearnerPlus/js/NoteEngine/CircleOfFifths.js";
+
 
 class QuestionFactory {
 

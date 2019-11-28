@@ -1,5 +1,5 @@
-import NoteComponent from "/ChordLearnerPlus/js/NoteComponent.js";
-import Chord from "/ChordLearnerPlus/js/Chord.js";
+import NoteComponent from "/ChordLearnerPlus/js/CanvasComponents/NoteComponent.js";
+import Chord from "/ChordLearnerPlus/js/NoteEngine/Chord.js";
 
 class StaveComponent{
  // FIXME: First Line + First treble Line

@@ -1,4 +1,4 @@
-import Chord from "/ChordLearnerPlus/js/Chord.js";
+import Chord from "/ChordLearnerPlus/js/NoteEngine/Chord.js";
 
 class Scale {
 

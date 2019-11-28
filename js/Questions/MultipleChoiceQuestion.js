@@ -1,4 +1,4 @@
-import Question from "/ChordLearnerPlus/js/Question.js";
+import Question from "/ChordLearnerPlus/js/Questions/Question.js";
 class MultipleChoiceQuestion extends Question{
 
 constructor(question, solution, incorrectAnswer1, incorrectAnswer2, incorrectAnswer3){

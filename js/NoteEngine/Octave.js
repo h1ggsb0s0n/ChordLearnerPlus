@@ -1,4 +1,4 @@
-import CircleOfFifths from "/ChordLearnerPlus/js/CircleOfFifths.js";
+import CircleOfFifths from "/ChordLearnerPlus/js/NoteEngine/CircleOfFifths.js";
 
 class Octave{
 

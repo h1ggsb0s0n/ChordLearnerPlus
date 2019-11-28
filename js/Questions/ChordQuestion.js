@@ -1,4 +1,4 @@
-import Question from "/ChordLearnerPlus/js/Question.js";
+import Question from "/ChordLearnerPlus/js/Questions/Question.js";
 
 class ChordQuestion extends Question  {
   constructor(question, chord) {

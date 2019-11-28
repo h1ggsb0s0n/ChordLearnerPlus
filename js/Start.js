@@ -1,8 +1,8 @@
-import Octave from "/ChordLearnerPlus/js/Octave.js";
-import CircleOfFifths from "/ChordLearnerPlus/js/CircleOfFifths.js";
-import QuestionFactory from "/ChordLearnerPlus/js/QuestionFactory.js";
-import StaveComponent from "/ChordLearnerPlus/js/StaveComponent.js";
-import Chord from "/ChordLearnerPlus/js/Chord.js";
+import Octave from "/ChordLearnerPlus/js/NoteEngine/Octave.js";
+import CircleOfFifths from "/ChordLearnerPlus/js/NoteEngine/CircleOfFifths.js";
+import QuestionFactory from "/ChordLearnerPlus/js/Questions/QuestionFactory.js";
+import StaveComponent from "/ChordLearnerPlus/js/CanvasComponents/StaveComponent.js";
+import Chord from "/ChordLearnerPlus/js/NoteEngine/Chord.js";
 
 
 $(document).ready(() => {
