@@ -108,6 +108,8 @@ $overlay.mousedown(removeOverlay);
       case "IntervalQuestion":
         stave.selectable(false);
         stave.addIntervalToStave(circleOfFifths.returnIntervalNumber(currentQuestion.getSolution()));
+        console.log("The interval is:");
+        console.log(circleOfFifths.returnIntervalNumber(currentQuestion.getSolution()));
         $answers.append(returnRadioButton(currentQuestion.getSolution(), "correctAnswer"));
         $answers.append(returnRadioButton(currentQuestion.getIncorrectAnswer1(), "incorrectAnswer"));
         $answers.append(returnRadioButton(currentQuestion.getIncorrectAnswer2(), "incorrectAnswer"));

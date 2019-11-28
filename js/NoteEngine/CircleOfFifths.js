@@ -22,7 +22,7 @@ returnIntervalNumber(interval){
 }
 
 getIntervals(){
-  return this.intervals;
+  return this.intervals.slice();
 }
 
 returnStep(step){

@@ -73,11 +73,12 @@ class StaveComponent{
   }
 
 // FIXME: needs to be corrected when linenumbers will be adapted
+// FIXME: This method does not work with an interval of 0 (PRIME)
   addIntervalToStave(interval){
     this.isSelectable = false;
     var noteToAdd1 = new NoteComponent((this.gap/2), (this.x +(this.length/2)), this.context);
     var noteToAdd2 = new NoteComponent((this.gap/2), (this.x +(this.length/2)), this.context);
-    var lineDifference = interval - 1; // Example => A third (3) is only (2) Lines differences
+    var lineDifference = interval; // Example => A third (3) is only (2) Lines differences
 
     switch(Math.floor(Math.random()*2)){
 
