@@ -17,6 +17,8 @@ $(document).ready(() => {
   let $overlay = $(".overlay_result");
   let $overlayImgCorrect = $("#correct");
   let $overlayImgFalse = $("#false");
+  let $currentQuestion = $("#question1");
+  let $nextQuestion = $("#question2");
   let questionFactory = new QuestionFactory();
   let circleOfFifths = new CircleOfFifths();
   let questionArray = questionFactory.returnArrayOfQuestions(10);
@@ -36,14 +38,17 @@ $(document).ready(() => {
 
 
   $checkAnswerButton.click(function() {
-  console.log("The Answer is: " + currentQuestion.getSolution());
+
   if(checkUserAnswers()){
     currentQuestion.setState("correct");
     addOverlay(true);
+    colorCurrentQuestionButton(true);
   } else {
     currentQuestion.setState("incorrect");
     addOverlay(false);
+    colorCurrentQuestionButton(false);
   }
+
   nextQuestion();
   setCard();
   });
@@ -133,15 +138,14 @@ $overlay.mousedown(removeOverlay);
 
   }
 
-  // TODO: Rename: more specific -> is only applied to ChordQuestion
+
   let checkUserAnswers = function(){
     let isCorrect;
     let type = currentQuestion.constructor.name;
     switch(type){
       case "ChordQuestion":
-        //not working
-        isCorrect = stave.isInChord(currentQuestion.getChord());
-        break;
+      isCorrect = stave.isInChord(currentQuestion.getChord());
+      break;
 
       case "IntervalQuestion":
       isCorrect = currentQuestion.checkAnswer(returnValueSelectedRadioButton())
@@ -157,9 +161,9 @@ $overlay.mousedown(removeOverlay);
 
   let returnValueSelectedRadioButton= function(){
     var selectedVal = "";
-    var selected = $("input[name='exampleRadios']:checked");//exampleRadios
-    if (selected.length > 0) {
-    selectedVal = selected.val();
+    var $selectedRadioButton = $("input[name='exampleRadios']:checked");//exampleRadios
+    if ($selectedRadioButton.length > 0) {
+    selectedVal = $selectedRadioButton.val();
     }
     return selectedVal;
   }
@@ -174,16 +178,20 @@ $overlay.mousedown(removeOverlay);
   //recursive function => not working so far
 
   let nextQuestion = function(){
-    getToIncorrectQuestion();
-    colorTheQuestion();
+    //getToIncorrectQuestion();
+    //colorTheQuestion();
+    //colorCurrentQuestionButton();
     if(currentIndex < questionArray.length-1){
       currentIndex += 1;
       currentQuestion = questionArray[currentIndex];
       }
-      else{ //restart
+      else{ //restart at 0
         currentIndex = 0;
         currentQuestion = questionArray[currentIndex];
       }
+      $currentQuestion = $("#Question"+ (currentIndex + 1)); //starts at 0
+      $nextQuestion = $("#Question"+ (currentIndex+ 2));//not working after one loop
+      blinkCurrentQuestionButton();
     }
     //ToDo: Recursive function Recursive Function to loop to the next question// NOT WORKING!
     let getToIncorrectQuestion = function(){
@@ -201,37 +209,25 @@ $overlay.mousedown(removeOverlay);
     }
 
 
-    // TODO: ugly method please change:
-    let colorTheQuestion = function(){
-      let state = currentQuestion.getState();
-      let $currentQuestion = $("#Question"+ (currentIndex + 1)); //starts at 0
-      let $nextQuestion = $("#Question"+ (currentIndex+ 2));//not working after one loop
+    let colorCurrentQuestionButton = function(bool){
       $currentQuestion.removeClass("btn-warning");
       $currentQuestion.removeClass("btn-danger");
       $currentQuestion.removeClass("btn-success");
-      $nextQuestion.addClass("btn-warning");
+      $currentQuestion.removeClass("blink_me");
 
-      switch(state){
-        case "unanswered": //not necessary
-        $currentQuestion.addClass("btn-success");//btn-secondary
-        break;
-        case "correct":
-        $currentQuestion.addClass("btn-success");
-        break;
-        case "incorrect":
+      switch (bool){
+        case false:
         $currentQuestion.addClass("btn-danger");
+        break;
+        case true:
+        $currentQuestion.addClass("btn-success");
         break;
       }
     }
 
-    /*let animateResult = function (bool){
-      $overlay.css("position", "absolute");
-      $overlay.css("top", "0");
-      $overlay.css("left", "0");
-      $overlay.css("width", "100%");
-      $overlay.css("min-height", "700px");
-      $overlay.css("background", "rgba(0, 0, 0, 0.7)");
-    }*/
+    let blinkCurrentQuestionButton = function(){
+      $currentQuestion.addClass("blink_me");
+    }
 
       let animate = function() {
 
